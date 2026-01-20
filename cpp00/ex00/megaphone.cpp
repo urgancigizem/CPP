@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gurganci <gurganci@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/01 14:38:53 by gurganci          #+#    #+#             */
-/*   Updated: 2025/09/01 15:32:26 by gurganci         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <iostream>
 #include <cctype>
 
@@ -30,12 +18,12 @@ int main(int argc, char **argv)
                 j++;
             }
             i++;
+            if(argv[i])
+                std::cout << ' ';
         }
         std::cout << std::endl;
     }
-    else
-    {
+    else 
         std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-    }
 	return (0);
 }

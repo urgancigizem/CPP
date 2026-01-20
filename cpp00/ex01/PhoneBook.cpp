@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gurganci <gurganci@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/01 14:40:40 by gurganci          #+#    #+#             */
-/*   Updated: 2025/09/01 15:55:30 by gurganci         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook() 
@@ -20,27 +8,27 @@ PhoneBook::PhoneBook()
 
 PhoneBook::~PhoneBook(){}
 
-
 std::string PhoneBook::getValidInput(const std::string& message)
 {
     std::string line;
-    
+
     while(1)
     {
         std::cout << message;
         std::getline(std::cin, line);
-        if(std::cin.eof())
-            exit(0);
+
         if(!line.empty())
             return line;
         std::cout << "Field cannot be empty! Try again." << std::endl;
     }
-    
-}
 
+}
 void PhoneBook::add()
 {
+    std::cin.ignore(); 
+
     Contact newContact;
+    std::string input;
 
     newContact.setFirstName(getValidInput("Enter first name: "));
     newContact.setLastName(getValidInput("Enter last name: "));
@@ -49,12 +37,12 @@ void PhoneBook::add()
     newContact.setDarkestSecret(getValidInput("Enter darkest secret: "));
 
 
-    if (_contactCount < 8)
+    if (_contactCount < 8) 
     {
         _contacts[_contactCount] = newContact;
         _contactCount++;
-    }
-    else
+    } 
+    else 
     {
         _contacts[_oldestContactIndex] = newContact;
         _oldestContactIndex = (_oldestContactIndex + 1) % 8;
@@ -65,7 +53,6 @@ void PhoneBook::add()
 void PhoneBook::search()
 {
     int index;
-    std::string line;
 
     if(_contactCount == 0)
     {
@@ -76,15 +63,8 @@ void PhoneBook::search()
     displayContacts();
 
     std::cout << "Enter index to display: ";
-    std::getline(std::cin, line);
-    if(std::cin.eof())
-        return;
-    if (line.length() > 1 || !isdigit(line[0]))
-    {
-        std::cout << "Invalid index!" << std::endl;
-        return;      
-    }
-    index = atoi(line.c_str());
+    std::cin >> index;
+    
     displayContact(index); 
 }
 void PhoneBook::displayContacts()
@@ -92,7 +72,7 @@ void PhoneBook::displayContacts()
     std::cout << std::setw(10) << std::right << "Index" << "|";
     std::cout << std::setw(10) << std::right << "First Name" << "|";
     std::cout << std::setw(10) << std::right << "Last Name" << "|";
-    std::cout << std::setw(10) << std::right << "Nickname" << "|" <<  std::endl;
+    std::cout << std::setw(10) << std::right << "Nickname" << std::endl;
 
     for(int i = 0; i < _contactCount; i++)
     {
@@ -101,7 +81,7 @@ void PhoneBook::displayContacts()
             std::cout << std::setw(10) << std::right << i << "|";
             std::cout << std::setw(10) << std::right << cutString(_contacts[i].getFirstName()) << "|";
             std::cout << std::setw(10) << std::right << cutString(_contacts[i].getLastName()) << "|";
-            std::cout << std::setw(10) << std::right << cutString(_contacts[i].getNickname()) << "|" << std::endl;
+            std::cout << std::setw(10) << std::right << cutString(_contacts[i].getNickname()) << std::endl;
 
         }
     }

@@ -41,7 +41,6 @@ void Harl::error( void )
 
 void Harl::complain( std::string level )
 {
-    // Pointer to member functions dizisi
     void (Harl::*functions[4])( void ) = {
         &Harl::debug,
         &Harl::info,
@@ -49,7 +48,6 @@ void Harl::complain( std::string level )
         &Harl::error
     };
     
-    // Level isimleri
     std::string levels[4] = {
         "DEBUG",
         "INFO",
@@ -57,7 +55,6 @@ void Harl::complain( std::string level )
         "ERROR"
     };
     
-    // Doğru fonksiyonu bul ve çağır
     for (int i = 0; i < 4; i++)
     {
         if (levels[i] == level)

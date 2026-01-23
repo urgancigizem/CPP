@@ -8,7 +8,7 @@ class HumanB
 {
 private:
 	std::string name;
-	Weapon* weapon;  // Pointer - silahsız olabilir
+	Weapon* weapon;
 
 public:
 	HumanB(std::string name);

@@ -8,7 +8,7 @@ class HumanA
 {
 private:
 	std::string name;
-	Weapon& weapon;  // Reference - her zaman silahlı
+	Weapon& weapon;
 
 public:
 	HumanA(std::string name, Weapon& weapon);

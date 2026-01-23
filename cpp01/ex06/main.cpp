@@ -25,19 +25,15 @@ int main(int argc, char **argv)
     std::string level = argv[1];
     int levelIndex = getLevel(level);
 
-    // SWITCH STATEMENT - Egzersizin ana odağı!
     switch (levelIndex)
     {
-        case 0:  // DEBUG
+        case 0:
             harl.complain("DEBUG");
-            // fall through - kasıtlı olarak break yok!
-        case 1:  // INFO
+        case 1:
             harl.complain("INFO");
-            // fall through
-        case 2:  // WARNING
+        case 2:
             harl.complain("WARNING");
-            // fall through
-        case 3:  // ERROR
+        case 3:
             harl.complain("ERROR");
             break;
         default:

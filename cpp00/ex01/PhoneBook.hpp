@@ -4,6 +4,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cctype>
+#include <cstdlib>
 #include "Contact.hpp"
 
 class PhoneBook{
@@ -14,6 +15,8 @@ private:
     int _oldestContactIndex;
     std::string cutString(const std::string& str);
     std::string getValidInput(const std::string& message);
+    //bool isDigitFunc(const std::string& phone);
+    //bool isLetterFunc(const std::string& name);
 
 
 public:

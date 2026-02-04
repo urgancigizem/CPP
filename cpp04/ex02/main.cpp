@@ -5,8 +5,6 @@
 
 int main(void)
 {
-	// --- Test 1: Animal* pointer ile Dog/Cat yaratma (hala çalışmalı) ---
-	std::cout << "=== Test 1: Polymorphism still works ===" << std::endl;
 	const Animal*	j = new Dog();
 	const Animal*	i = new Cat();
 
@@ -18,30 +16,28 @@ int main(void)
 	delete j;
 	delete i;
 
-	// --- Test 2: Array testi ---
-	std::cout << "\n=== Test 2: Animal Array ===" << std::endl;
+	std::cout << "\n===  Animal Array ===" << std::endl;
 	const int	SIZE = 6;
 	Animal*		animals[SIZE];
 
-	for (int idx = 0; idx < SIZE; idx++)
+	for (int i = 0; i < SIZE; i++)
 	{
-		if (idx % 2 == 0)
-			animals[idx] = new Dog();
+		if (i % 2 == 0)
+			animals[i] = new Dog();
 		else
-			animals[idx] = new Cat();
+			animals[i] = new Cat();
 	}
 
-	for (int idx = 0; idx < SIZE; idx++)
+	for (int j = 0; j < SIZE; j++)
 	{
-		std::cout << animals[idx]->getType() << ": ";
-		animals[idx]->makeSound();
+		std::cout << animals[j]->getType() << ": ";
+		animals[j]->makeSound();
 	}
 
-	for (int idx = 0; idx < SIZE; idx++)
-		delete animals[idx];
+	for (int k = 0; k < SIZE; k++)
+		delete animals[k];
 
-	// --- Test 3: Deep copy testi ---
-	std::cout << "\n=== Test 3: Deep Copy ===" << std::endl;
+	std::cout << "\n===Deep Copy ===" << std::endl;
 	Dog	original;
 	original.getBrain()->ideas[0] = "Abstract world";
 
@@ -58,7 +54,6 @@ int main(void)
 	std::cout << "After modify - Original: " << original.getBrain()->ideas[0] << std::endl;
 	std::cout << "After modify - Copied:   " << copied.getBrain()->ideas[0] << std::endl;
 
-	// --- Test 4: Assignment operator ---
 	std::cout << "\n=== Test 4: Assignment Operator ===" << std::endl;
 	Cat	cat1;
 	cat1.getBrain()->ideas[0] = "Cat idea 1";
@@ -73,9 +68,6 @@ int main(void)
 		std::cout << "Deep copy OK!" << std::endl;
 	else
 		std::cout << "ERROR - shallow copy!" << std::endl;
-
-	// --- NOTE: Aşağıdaki satırı uncomment edersen compile error verir ---
-	// const Animal* meta = new Animal(); // ERROR: cannot instantiate abstract class
 
 	return (0);
 }

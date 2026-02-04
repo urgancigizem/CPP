@@ -4,7 +4,8 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class DiamondTrap : public ScavTrap, public FragTrap {
+class DiamondTrap : public ScavTrap, public FragTrap 
+{
 private:
     std::string _name;
 
@@ -15,7 +16,6 @@ public:
     DiamondTrap& operator=(const DiamondTrap& other);
     ~DiamondTrap();
 
-    // Resolve all ambiguous functions from ClapTrap
     using ClapTrap::attack;
     using ClapTrap::takeDamage;
     using ClapTrap::beRepaired;
@@ -24,10 +24,8 @@ public:
     using ClapTrap::getEnergyPoints;
     using ClapTrap::getAttackDamage;
 
-    // Override attack with ScavTrap's version
     void attack(const std::string& target);
 
-    // Special ability
     void whoAmI();
 };
 

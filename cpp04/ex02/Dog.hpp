@@ -6,6 +6,8 @@
 
 class Dog : public Animal
 {
+private:
+	Brain	*brain;
 public:
 	Dog(void);
 	Dog(Dog const & other);
@@ -15,8 +17,6 @@ public:
 	void makeSound(void) const;
 	Brain *getBrain(void) const;
 
-private:
-	Brain	*brain;
 };
 
 #endif
